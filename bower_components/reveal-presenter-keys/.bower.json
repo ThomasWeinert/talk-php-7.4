@@ -1,0 +1,31 @@
+{
+  "name": "reveal-presenter-keys",
+  "version": "0.1.0",
+  "description": "Map keys by presenter profile name",
+  "homepage": "https://github.com/thomasweinert/reveal-presenter-keys",
+  "license": "MIT",
+  "authors": [
+    "Thomas Weinert <thomas@weinert.info>"
+  ],
+  "keywords": [
+    "reveal",
+    "presenter",
+    "keys",
+    "keycode"
+  ],
+  "main": [
+    "src/presenter-keys.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "65ea1d938c5d99695ec6765c23b01311987e1eb4"
+  },
+  "_source": "https://github.com/ThomasWeinert/reveal-presenter-keys.git",
+  "_target": "^0.1.0",
+  "_originalSource": "reveal-presenter-keys"
+}

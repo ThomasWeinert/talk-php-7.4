@@ -1,0 +1,29 @@
+{
+  "name": "reveal-print",
+  "version": "0.1.0",
+  "description": "Extended print triggers for reveal.js",
+  "homepage": "https://github.com/thomasweinert/reveal-print",
+  "license": "MIT",
+  "authors": [
+    "Thomas Weinert <thomas@weinert.info>"
+  ],
+  "keywords": [
+    "reveal",
+    "print"
+  ],
+  "main": [
+    "src/print.js"
+  ],
+  "ignore": [
+    "**/.*"
+  ],
+  "_release": "0.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.1.0",
+    "commit": "06c98663dfff38d6a14971fc887df754ee7b95a8"
+  },
+  "_source": "https://github.com/ThomasWeinert/reveal-print.git",
+  "_target": "^0.1",
+  "_originalSource": "reveal-print"
+}

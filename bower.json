@@ -1,0 +1,26 @@
+{
+  "name": "thomasweinert-workshop-pcre",
+  "authors": [
+    "Thomas Weinert <thomas@weinert.info>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "http://thomas.weinert.info",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reveal.js": "^3.3.0",
+    "reveal.js-menu": "^0.7.1",
+    "reveal-print": "^0.1",
+    "reveal-badges": "^1.2",
+    "reveal-presenter-keys": "^0.1.0",
+    "reveal-sampler": "https://github.com/ThomasWeinert/reveal-sampler.git#master"
+  }
+}

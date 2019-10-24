@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>PHP 7.4</title>
+
+    <meta name="author" content="Thomas Weinert">
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:website" content="@ThomasWeinert" />
+    <meta property="og:url" content="https://thomas.weinert.info/talk-php-7.4/" />
+    <meta property="og:title" content="Talk: PHP 7.4. Changes" />
+    <meta property="og:description" content="Showing off the new features and changes in PHP 7.4" />
+<!--    <meta property="og:image" content="" />-->
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/black.css" id="theme">
+
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/highlight.js/styles/idea.css">
+
+    <style type="text/css">
+      @media print {
+        body.print-pdf .slide-menu-button {
+          display: none;
+        }
+      }
+      .hljs-tag {
+        background-color: transparent;
+      }
+    </style>
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <style>
+      body > div.reveal {
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255,255,255,0.1) 0%,
+          rgba(255,255,255,0.15) 50%,
+          rgba(255,255,255,0) 100%
+        );
+      }
+      ul.code {
+        font-family: monospace;
+      }
+
+      .reveal section ul li code,
+      .reveal code {
+        font-family: "Source Code Pro", monospace;
+      }
+      .reveal code .placeholder {
+        opacity: 0.65;
+      }
+      .reveal section img.scribble {
+        border: 1px solid silver;
+        background: white;
+        padding: 10px;
+        max-height: 500px;
+      }
+      .reveal section img.borderless {
+        border: none;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="reveal" data-video="small top-right">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <section>
+            <h1>PHP 7.4</h1>
+            <h2>Changes</h2>
+            <p>
+              <small>@ThomasWeinert</small>
+            </p>
+          </section>
+          <section>
+            <h2>About Me</h2>
+            <div style="display: flex; align-items: center; justify-content: space-around;">
+              <ul>
+                <li><a href="http://www.dimensional.de">dimensional GmbH</a></li>
+                <li>Application Developer</li>
+                <li>PHP >= 20 years</li>
+                <li>XML Fanatic</li>
+                <li>Brompton Rider</li>
+              </ul>
+              <div>
+                <img src="images/office.jpg" style="max-height: 500px"/>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2>TOC</h2>
+            <div style="display: flex; align-items: center; justify-content: space-around;">
+              <ul>
+                <li>Syntax Features</li>
+                <li>Syntax Breaks</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Syntax Features</h2>
+          </section>
+          <section>
+            <h3>Typed Properties</h3>
+            <pre><code data-sample="./examples/typed-properties.php#2-20" class="language-php"></code></pre>
+            <ul>
+              <li>Enforced - depending on strict_types</li>
+              <li>Nullable</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/typed_properties_v2">https://wiki.php.net/rfc/typed_properties_v2</a>
+            </p>
+          </section>
+          <section>
+            <h3>Arrow Functions</h3>
+            <pre><code data-sample="./examples/arrow-functions.php#2-20" class="language-php"></code></pre>
+            <ul>
+              <li>Single Expression</li>
+              <li>Automatic binding</li>
+              <li>Nesting</li>
+              <li>Static</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/arrow_functions_v2">https://wiki.php.net/rfc/arrow_functions_v2</a>
+            </p>
+          </section>
+          <section>
+            <h3>Type Covariance</h3>
+            <pre><code data-sample="./examples/type-covariance.php#2-20" class="language-php"></code></pre>
+            <ul>
+              <li>Less Specific Argument Type</li>
+              <li>More Specific Return Type</li>
+              <li>Needs Autoloading</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/covariant-returns-and-contravariant-parameters#2-20">
+                https://wiki.php.net/rfc/covariant-returns-and-contravariant-parameters
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Null coalescing assignment operator</h3>
+            <pre><code data-sample="./examples/null-coalescing-assignment-operator.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/null_coalesce_equal_operator">
+                https://wiki.php.net/rfc/null_coalesce_equal_operator
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Unpacking inside arrays</h3>
+            <pre><code data-sample="./examples/unpacking-inside-arrays.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/spread_operator_for_array">
+                https://wiki.php.net/rfc/spread_operator_for_array
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Numeric literal separator</h3>
+            <pre><code data-sample="./examples/numeric-literal-separator.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/numeric_literal_separator">
+                https://wiki.php.net/rfc/numeric_literal_separator
+              </a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>BC Breaks</h2>
+          </section>
+          <section>
+            <h3>New Keyword: <span style="text-transform: none;">fn</span></h3>
+            <p>
+              <em>fn</em> is now a reserved keyword. In particular, it can no longer be used as a function or class name.
+              It can still be used as a method or class constant name.
+            </p>
+          </section>
+          <section>
+            <h3><span style="text-transform: none;">&lt;?php</span> tag at end of file</h3>
+            <p>
+              &lt;?php at the end of the file (without trailing newline) will now be interpreted as an opening PHP tag.
+            </p>
+          </section>
+          <section>
+            <h3>Array Access</h3>
+            <p>
+              Trying to use values of type null, bool, int, float or resource as an array (such as $null["key"])
+              will now generate a notice.
+            </p>
+            <p>
+              <a href="https://wiki.php.net/rfc/notice-for-non-valid-array-container">
+                https://wiki.php.net/rfc/notice-for-non-valid-array-container
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>get_declared_classes()</h3>
+            <p>
+              The get_declared_classes() function no longer returns anonymous classes that have not been instantiated yet.
+            </p>
+            <p>
+              <a href="https://wiki.php.net/rfc/notice-for-non-valid-array-container">
+                https://wiki.php.net/rfc/notice-for-non-valid-array-container
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Password algorithm constants</h3>
+            <ul>
+              <li>PASSWORD_DEFAULT was int 1; now is NULL</li>
+              <li>PASSWORD_BCRYPT was int 1; now is string '2y'</li>
+              <li>PASSWORD_ARGON2I was int 2; now is string 'argon2i'</li>
+              <li>PASSWORD_ARGON2ID was int 3; now is string 'argon2id'</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Include On Stream Wrappers</h3>
+          </section>
+          <section>
+            <h3><span style="text-transform: none;">htmlentities()</span></h3>
+            <p>
+              htmlentities() will now raise a notice (instead of a strict standards warning) if it is used with an
+              encoding for which only basic entity substitution is supported, in which case it is equivalent to
+              htmlspecialchars().
+            </p>
+          </section>
+          <section>
+            <h3><span style="text-transform: none;">fread() and fwrite()</span></h3>
+            <p>
+              fread() and fwrite() will now return FALSE if the operation failed. Previously an empty string or 0 was
+              returned. EAGAIN/EWOULDBLOCK are not considered failures.
+            </p>
+            <p>
+              These functions now also raise a notice on failure, such as when trying to write to a read-only file resource.
+            </p>
+          </section>
+          <section>
+            <h3>BCMATH</h3>
+            <p>
+              BCMath functions will now warn if a non well-formed number is passed, such as "32foo". The argument will
+              be interpreted as zero, as before.
+            </p>
+          </section>
+          <section>
+            <h3>CURL</h3>
+            <p>
+              Attempting to serialize a CURLFile class will now generate an exception. Previously the exception was
+              only thrown on unserialization.
+            </p>
+            <p>Using CURLPIPE_HTTP1 is deprecated, and is no longer supported as of cURL 7.62.0.</p>
+            <p>
+              The $version parameter of curl_version() is deprecated. If any value not equal to the default
+              CURLVERSION_NOW is passed, a warning is raised and the parameter is ignored.
+            </p>
+          </section>
+          <section>
+            <h3>Date and Time</h3>
+            <p>
+              Calling var_dump() or similar on a DateTime or DateTimeImmutable instance will no longer leave behind
+              accessible properties on the object.
+            </p>
+            <p>
+              Comparison of DateInterval objects (using ==, <, and so on) will now generate a warning and always return
+              FALSE. Previously all DateInterval objects were considered equal, unless they had properties.
+            </p>
+          </section>
+          <section>
+            <h3>Intl</h3>
+            <p>
+              The default parameter value of idn_to_ascii() and idn_to_utf8() is now INTL_IDNA_VARIANT_UTS46 instead of
+              the deprecated INTL_IDNA_VARIANT_2003.
+            </p>
+          </section>
+          <section>
+            <h3>MySQLi</h3>
+            <p>
+               The embedded server functionality has been removed. It was broken since at least PHP 7.0.
+            </p>
+            <p>
+              The undocumented mysqli::$stat property has been removed in favor of mysqli::stat().
+            </p>
+          </section>
+          <section>
+            <h3>OpenSSL</h3>
+            <p>
+              The openssl_random_pseudo_bytes() function will now throw an exception in error situations, similar to
+              random_bytes(). In particular, an Error is thrown if the number of requested bytes is less than or
+              equal to zero, and an Exception is thrown if sufficient randomness cannot be gathered.
+              The $crypto_strong output argument is guaranteed to always be TRUE if the function does not throw,
+              so explicitly checking it is not necessary.
+            </p>
+          </section>
+          <section>
+            <h3>PCRE</h3>
+            <p>
+              When PREG_UNMATCHED_AS_NULL mode is used, trailing unmatched capturing groups will now also be set to
+              NULL (or [null, -1] if offset capture is enabled). This means that the size of the $matches will
+              always be the same.
+            </p>
+          </section>
+          <section>
+            <h3>PDO</h3>
+            <p>
+              Attempting to serialize a PDO or PDOStatement instance will now generate an Exception rather than a
+              PDOException, consistent with other internal classes which do not support serialization.
+            </p>
+          </section>
+          <section>
+            <h3>Reflection</h3>
+            <p>
+              Reflection objects will now generate an exception if an attempt is made to serialize them. Serialization
+              for reflection objects was never supported and resulted in corrupted reflection objects. It has been
+              explicitly prohibited now.
+            </p>
+          </section>
+          <section>
+            <h3>SPL: ArrayObject</h3>
+            <p>
+              Calling get_object_vars() on an ArrayObject instance will now always return the properties of the
+              ArrayObject itself (or a subclass). Previously it returned the values of the wrapped array/object
+              unless the ArrayObject::STD_PROP_LIST flag was specified.
+            </p>
+          </section>
+          <section>
+            <h3>SPL: SplPriorityQueue</h3>
+            <p>
+              SplPriorityQueue::setExtractFlags() will throw an exception if zero is passed. Previously this
+              would generate a recoverable fatal error on the next extraction operation.
+            </p>
+          </section>
+          <section>
+            <h3>SPL: Serialization</h3>
+            <p>
+              ArrayObject, ArrayIterator, SplDoublyLinkedList and SplObjectStorage now support the __serialize() and
+              __unserialize() mechanism in addition to the Serializable interface. This means that serialization
+              payloads created on older PHP versions can still be unserialized, but new payloads created by PHP 7.4
+              will not be understood by older versions.
+            </p>
+          </section>
+          <section>
+            <h3>Tokenizer</h3>
+            <p>
+              token_get_all() will now emit a T_BAD_CHARACTER token for unexpected characters instead of leaving
+              behind holes in the token stream.
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Deprecated</h2>
+          </section>
+          <section>
+            <h3>Deprecated I</h3>
+            <ul>
+              <li>The real type</li>
+              <li>Magic quotes legacy</li>
+              <li>array_key_exists() with objects</li>
+              <li>FILTER_SANITIZE_MAGIC_QUOTES filter</li>
+              <li>Reflection export() methods</li>
+              <li>mb_strrpos() with encoding as 3rd argument</li>
+              <li>implode() parameter order mix</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/deprecations_php_7_4">
+                https://wiki.php.net/rfc/deprecations_php_7_4
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Deprecated II</h3>
+            <ul>
+              <li>Unbinding $this from non-static closures</li>
+              <li>hebrevc() function</li>
+              <li>convert_cyr_string() function</li>
+              <li>money_format() function</li>
+              <li>ezmlm_hash() function</li>
+              <li>restore_include_path() function</li>
+              <li>allow_url_include ini directive</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/deprecations_php_7_4">
+                https://wiki.php.net/rfc/deprecations_php_7_4
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Ternary Operator</h3>
+            <pre><code data-sample="./examples/ternary-operator.php#2-20" class="language-php"></code></pre>
+            <pre><code class="language-plaintext">Unparenthesized `a ? b : c ? d : e` is deprecated</code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/ternary_associativity">
+                https://wiki.php.net/rfc/ternary_associativity
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>curly brace array access</h3>
+            <pre><code data-sample="./examples/curly-brace-array-access.php#2-20" class="language-php"></code></pre>
+            <pre><code class="language-plaintext">Array and string offset access syntax with
+curly braces is deprecated</code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/deprecate_curly_braces_array_access">
+                https://wiki.php.net/rfc/deprecate_curly_braces_array_access
+              </a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section><h2>(Re)Moved</h2></section>
+          <section>
+            <h3>ext/interbase</h3>
+            <p>
+              <a href="https://wiki.php.net/rfc/deprecate-and-remove-ext-interbase">
+                https://wiki.php.net/rfc/deprecate-and-remove-ext-interbase
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>ext/wddx</h3>
+            <p>Web Distributed Data eXchange</p>
+            <p>
+              <a href="https://wiki.php.net/rfc/deprecate-and-remove-ext-wddx">
+                https://wiki.php.net/rfc/deprecate-and-remove-ext-wddx
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>ext/recode</h3>
+            <p>Conversion between different character sets/encodings.</p>
+            <p>
+              <a href="https://wiki.php.net/rfc/unbundle_recode">
+                https://wiki.php.net/rfc/unbundle_recode
+              </a>
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Features</h2>
+          </section>
+          <section>
+            <h3>Exceptions from <span style="text-transform: none;">__toString()</span></h3>
+          </section>
+          <section>
+            <h3>Concatenation Operator Precedence</h3>
+            <pre><code data-sample="./examples/concatenation.php#2-20" class="language-php"></code></pre>
+          </section>
+          <section>
+            <h3>Weak References</h3>
+            <pre><code data-sample="./examples/weak-references.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/weakrefs">
+                https://wiki.php.net/rfc/weakrefs
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Reference Reflection</h3>
+            <p>
+              <a href="https://wiki.php.net/rfc/reference_reflection">
+                https://wiki.php.net/rfc/reference_reflection
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>FFI</h3>
+            <pre><code data-sample="./examples/ffi.php#2-20" class="language-php"></code></pre>
+            <ul>
+              <li>Foreign Function Interface</li>
+              <li>LuaJTI/FFI, Python/CFFI</li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/ffi">
+                https://wiki.php.net/rfc/ffi
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Object Serialization</h3>
+            <pre><code data-sample="./examples/object-serialization.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/custom_object_serialization">
+                https://wiki.php.net/rfc/custom_object_serialization
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>OPCache: Preloading</h3>
+            <ul>
+              <li>Preloader Script</li>
+              <li>Limits
+                <ul>
+                  <li>Top level</li>
+                  <li>Completely resolvable</li>
+                  <li>Windows Only - no internal class ancestor</li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              <a href="https://wiki.php.net/rfc/preload">
+                https://wiki.php.net/rfc/preload
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>ext/hash</h3>
+            <p>Always available</p>
+            <p>
+              <a href="https://wiki.php.net/rfc/permanent_hash_ext">
+                https://wiki.php.net/rfc/permanent_hash_ext
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>Extensible Password API</h3>
+            <p>
+              Allow extensions to register additional hashing mechanisms.
+              Provide argon2i(d) implementations from ext/sodium.
+            </p>
+            <p>
+              <a href="https://wiki.php.net/rfc/password_registry">
+                https://wiki.php.net/rfc/password_registry
+              </a>
+              <br>
+              <a href="https://wiki.php.net/rfc/sodium.argon.hash">
+                https://wiki.php.net/rfc/sodium.argon.hash
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>CURL: Stream wrappers</h3>
+          </section>
+          <section>
+            <h3>Filter: FILTER_VALIDATE_FLOAT</h3>
+          </section>
+          <section>
+            <h3>PCRE: Replace Callback Flags</h3>
+          </section>
+          <section>
+            <h3>MBSTRING: <span style="text-transform: none;">mb_str_split()</span></h3>
+            <pre><code data-sample="./examples/mb_str_split.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/mb_str_split">
+                https://wiki.php.net/rfc/mb_str_split
+              </a>
+            </p>
+          </section>
+          <section>
+            <h3>PDO: Escape Placeholder</h3>
+            <pre><code data-sample="./examples/pdo-placeholders.php#2-20" class="language-php"></code></pre>
+            <p>
+              <a href="https://wiki.php.net/rfc/pdo_escape_placeholders">
+                https://wiki.php.net/rfc/pdo_escape_placeholders
+              </a>
+            </p>
+          </section>
+        </section>
+      </div>
+
+    </div>
+
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        slideNumber: "c/t",
+
+        //showNotes: isPrintView ? true /*"separate-page" */ : false,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        //parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        //parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'bower_components/reveal.js-menu/menu.js' },
+          { src: 'bower_components/reveal-badges/src/badges.js' },
+          { src: 'bower_components/reveal-presenter-keys/src/presenter-keys.js' },
+          { src: 'bower_components/reveal-print/src/print.js' },
+          { src: 'bower_components/reveal-sampler/sampler.js' },
+
+          { src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ],
+
+        menu: {
+          side: 'left',
+          markers: true,
+          numbers: false,
+          themes: [
+            { name: 'Black', theme: 'bower_components/reveal.js/css/theme/black.css' },
+            { name: 'White', theme: 'bower_components/reveal.js/css/theme/white.css' }
+          ]
+        },
+
+        badges: {
+          languages : false
+        },
+
+        presenter: {
+          profile: 'Lenovo Yoga Mouse'
+        },
+
+        sampler: {
+          proxyURL: document.location.href.match(/http:\/\/localhost/) ? 'proxy.php?file=' : '',
+          lineNumbers: true
+        }
+
+      });
+
+    </script>
+
+  </body>
+</html>

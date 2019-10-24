@@ -1,0 +1,32 @@
+{
+  "name": "reveal-sampler",
+  "description": "A reveal.js plugin to include code samples in slides",
+  "homepage": "https://github.com/ldionne/reveal-sampler",
+  "license": "MIT",
+  "authors": [
+    "Louis Dionne"
+  ],
+  "keywords": [
+    "reveal-js",
+    "reveal-plugin",
+    "slide",
+    "sampler"
+  ],
+  "main": [
+    "sampler.js"
+  ],
+  "ignore": [
+    "**/.*",
+    "docs/",
+    "example/"
+  ],
+  "_release": "e6fb33fa29",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e6fb33fa29212bf68d74ceb13e9b8180ee003c63"
+  },
+  "_source": "https://github.com/ThomasWeinert/reveal-sampler.git",
+  "_target": "master",
+  "_originalSource": "https://github.com/ThomasWeinert/reveal-sampler.git"
+}
