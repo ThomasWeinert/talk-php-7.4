@@ -547,12 +547,21 @@ curly braces is deprecated</code></pre>
           </section>
           <section>
             <h3>CURL: Stream wrappers</h3>
+            <p>
+              CURLFile now supports stream wrappers in addition to plain file names, if the extension has been built
+              against libcurl >= 7.56.0.
+            </p>
           </section>
           <section>
             <h3>Filter: FILTER_VALIDATE_FLOAT</h3>
+            <p>
+              The FILTER_VALIDATE_FLOAT filter now supports the min_range and max_range options, with the same
+              semantics as FILTER_VALIDATE_INT.
+            </p>
           </section>
           <section>
             <h3>PCRE: Replace Callback Flags</h3>
+            <pre><code data-sample="./examples/pcre-callback-flags.php#2-20" class="language-php"></code></pre>
           </section>
           <section>
             <h3>MBSTRING: <span style="text-transform: none;">mb_str_split()</span></h3>
